@@ -20,14 +20,23 @@ This application allows you to listen to your favorite music, and additionally a
 
 ## Screenshots
 - Initial page
+
 ![App Screenshot](https://i.imgur.com/51ptP3r.png)
+
 - Home page
+
 ![App Screenshot](https://i.imgur.com/mual8Ah.png)
+
 - Ambient sounds modal window
+
 ![App Screenshot](https://i.imgur.com/0Dz0dF1.png)
+
 - Detailed song information page
+
 ![App Screenshot](https://i.imgur.com/hCJOa26.png)
+
 - Share your playlist feature
+
 ![App Screenshot](https://i.imgur.com/2O3TPZi.png)
 
 ## Tech Stack
