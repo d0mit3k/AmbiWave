@@ -1,0 +1,59 @@
+{% extends "basic.html" %}
+
+<!-- Config -->
+{% block title %}Song{% endblock %}
+{% block file %}song{% endblock %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href= "{{ url_for('static',filename='CSS/song.css') }}">
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="headtxt"><i class="fas fa-music hdtxt"></i>Informacje o utworze</div>
+    <div class="content">
+                <div class="likes">
+                    <dl>
+                        <dt>Oceń utwór</dt>
+                        <dd class="lk"><b class="lt">{{  Likes[0] }}</b><i class="fas fa-thumbs-up" id="ID_Like" onclick="like('{{ ID }}')"></i></dd>
+                        <dd class="dlk"><i class="fas fa-thumbs-down" id="ID_Dislike" onclick="unlike('{{ ID }}')"></i><b class="rt">{{ Likes[1] }}</b></dd>
+                        <dt><div class="bar">
+                            <div class="like" style="width:{{ Percent[0] }}%"px></div>
+                            <div class="dislike" style="width:{{ Percent[1] }}%"px></div>
+                        </div></dt>
+                     </dl>
+                </div>
+        <div class="song">
+            <div class="icon"><i class="fas fa-compact-disc"></i></div>
+                <div class="info">
+                <dl>
+                  <dt>Tytuł:</dt>
+                  <dd>{{ Info[0][1] }}</dd>
+                  <dt>Wykonawca:</dt>
+                  <dd>{{ Info[0][2] }}</dd>
+                  <dt>Czas trwania:</dt>
+                  <dd>{{ Info[0][3] }}</dd>
+                  <dt class="dtright">Posłuchaj <i class="fas fa-play" onclick="player_change('/static/Songs/{{ Info[0][4] }}');"></i></dt>
+                </dl>
+            </div>
+        </div>
+        <div class="comments">
+            <dt>Komentarze<i class="fas fa-comments"></i></dt>
+            <div class="commbox">
+                    <form action="/comment/add/{{ ID }}" method="post">
+                    <div>
+                        <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1em;"></textarea>
+                    </div>
+                    <input id="comment" type="submit" value="Dodaj">
+                </form>
+            </div>
+            {% if Comments %}
+                <div class="comment">
+                    {% for Data in Comments %}
+                        <p class="user"><i class="fas fa-user"></i>{{ Data[4] }}</p>
+                        <p>{{ Data[3] }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

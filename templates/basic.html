@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AmbiWave</title>
+    <script src="{{ url_for('static',filename='JS/basic.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static',filename='JS/bootstrap.js') }}" ></script>
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='CSS/basic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='Bootstrap/bootstrap.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="top">
+  		<span class="a"><div class="toplogo"><a class="logo" href="/home">AmbiWave</a></div></span>
+        <span class="b"><a class="tophref" href="/home"><i class="fas fa-music"></i><span class="txt">Lista utworów</span></a></span>
+        <span class="c"><a class="tophref" href="/favorite"><i class="fas fa-heart"></i><span class="txt">Ulubione</span></a></span>
+        <span class="d"><i class="fas fa-user"></i><span class="txt"><b>{{ session['username'] }}</b></span></span>
+  		<span class="e"><a class="btn btn-primary" href="/logout">Wyloguj</a></span>
+        <span class="f"><a class="tophref fas fa-sign-out-alt" href="/logout"></a></span>
+  	</div>
+
+    <div class="player">
+          <audio id="player">
+            <source src="/static/Songs/Paris.mp3">
+          </audio>
+          <div class="audplay">
+            <div class="timeline">
+            <div class="progress"></div>
+          </div>
+          <div class="ctrl">
+            <div class="plcont">
+              <div class="togplay fas fa-play">
+              </div>
+            </div>
+            <div class="time">
+            <div class="current">0:00</div>
+            <div class="divide">/</div>
+            <div class="length"></div>
+          </div>
+            <div class="name">AmbiPlayer</div>
+            <div class="volcont">
+            <div class="volbutt">
+              <div class="volume fas fa-volume-up"></div>
+            </div>
+            <div class="volslid">
+              <div class="volperc"></div>
+            </div>
+          </div>
+            <div class="ambi">
+                <i class="fas fa-leaf" data-toggle="modal" data-target="#ambient"></i>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="ambient" tabindex="-1" role="dialog" aria-labelledby="log" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="log">Dźwięki otoczenia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+              <div class="ambient">
+                <i class="fas fa-cloud-showers-heavy"></i>
+                <i class="fas fa-wind"></i>
+                <i class="fas fa-fire"></i>
+                <i class="fas fa-dove"></i>
+                <div class="switch">
+                  <div class="rain fas fa-toggle-off" onclick="playrain();"></div>
+                  <div class="wind fas fa-toggle-off" onclick="playwind();"></div>
+                  <div class="fire fas fa-toggle-off" onclick="playfire();"></div>
+                  <div class="bird fas fa-toggle-off" onclick="playbird();"></div>
+                </div>
+                <div class="volico">
+                  <div class="fas fa-volume-up rainv"></div>
+                  <div class="fas fa-volume-up windv"></div>
+                  <div class="fas fa-volume-up firev"></div>
+                  <div class="fas fa-volume-up birdv"></div>
+                </div>
+                <div class="ambvol">
+                  <div class="rainvolcont">
+                    <div class="rainvolslid">
+                      <div class="rainvolperc"></div>
+                    </div>
+                  </div>
+                  <div class="windvolcont">
+                    <div class="windvolslid">
+                      <div class="windvolperc"></div>
+                    </div>
+                  </div>
+                  <div class="firevolcont">
+                    <div class="firevolslid">
+                      <div class="firevolperc"></div>
+                    </div>
+                  </div>
+                  <div class="birdvolcont">
+                    <div class="birdvolslid">
+                      <div class="birdvolperc"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% block content %}{% endblock %}
+
+    <script src="{{ url_for('static',filename='JS/bootstrap.js') }}" ></script>
+    <script src="{{ url_for('static',filename='JS/basic.js') }}"></script>
+    <script src="{{ url_for('static',filename='JS/player.js') }}"></script>
+    <script src="{{ url_for('static',filename='JS/favorite.js') }}"></script>
+    <script src="{{ url_for('static',filename='JS/ambiplayer.js') }}"></script>
+
+    {% block js %}{% endblock %}
+</body>
