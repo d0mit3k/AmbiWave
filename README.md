@@ -33,7 +33,7 @@ This application allows you to listen to your favorite music, and additionally a
 
 - Detailed song information page
 
-![App Screenshot](https://i.imgur.com/hCJOa26.png)
+![App Screenshot](https://i.imgur.com/9bSDexK.png)
 
 - Share your playlist feature
 
